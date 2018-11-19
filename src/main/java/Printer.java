@@ -25,7 +25,7 @@ public class Printer {
 
     public boolean confirmPrint(int pages, int copies) {
         int pagesNeededToPrint = this.pagesNeeded(pages, copies);
-        if (pagesNeededToPrint <= this.pages){
+        if ((pagesNeededToPrint <= this.pages) && (pagesNeededToPrint <= this.toner)){
             return true;
         }
         return false;

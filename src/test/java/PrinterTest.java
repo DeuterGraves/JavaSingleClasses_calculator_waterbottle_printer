@@ -106,6 +106,21 @@ public class PrinterTest {
         assertEquals(1000, printer.refillToner());
     }
 
+    @Test
+    public void enoughPaperNotToner(){
+        Printer lowTonerPrinter = new Printer(100, 25);
+        lowTonerPrinter.print(5,10);
+        int tonerRemaining = lowTonerPrinter.getToner();
+        assertEquals(25, tonerRemaining);
+    }
+
+    @Test
+    public void enoughPaperNotTonerPages(){
+        Printer lowTonerPrinter = new Printer(100, 25);
+        lowTonerPrinter.print(5,10);
+        int pagesRemaining = lowTonerPrinter.getPages();
+        assertEquals(100, pagesRemaining);
+    }
 
 
 
