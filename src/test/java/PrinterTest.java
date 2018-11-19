@@ -63,7 +63,22 @@ public class PrinterTest {
         assertEquals(45, pagesRemaining);
     }
 
+    @Test
+    public void tonerUsedOnPrint(){
+        printer.print(5,5);
+        int tonerRemaining = printer.getToner();
+        assertEquals(975, tonerRemaining);
+    }
 
+//    toner not used when no printing happens
+    @Test
+    public void noTonerUsedWhenNoPrint(){
+        Printer lowPaperPrinter = new Printer(45, 145);
+        lowPaperPrinter.print(5,10);
+        int tonerRemaining = lowPaperPrinter.getToner();
+        assertEquals(145, tonerRemaining);
+
+    }
     //    Create a method to refill the printer paper.
 
    @Test
