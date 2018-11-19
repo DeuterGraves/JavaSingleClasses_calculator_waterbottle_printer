@@ -41,17 +41,26 @@ public class PrinterTest {
         assertEquals(false, lowPaper.confirmPrint(5, 5));
     }
 
+    //    Prints - decreases paper by pages * copies
+    @Test
+    public void printerUsesPaper(){
+        assertEquals(75, printer.decreasePaper(5, 5));
+    }
 
 //    Prints - decreases paper by pages * copies
     @Test
     public void printerPrints(){
-        assertEquals(75, printer.print(5, 5));
+        printer.print(5,5);
+        int pagesRemaining = printer.getPages();
+        assertEquals(75, pagesRemaining);
     }
 
     @Test
     public void printerDoesntPrint(){
-        Printer lowPaper = new Printer(45, 45);
-        assertEquals(45, lowPaper.print(5, 10));
+        Printer lowPaperPrinter = new Printer(45, 45);
+        lowPaperPrinter.print(5, 10);
+        int pagesRemaining = lowPaperPrinter.getPages();
+        assertEquals(45, pagesRemaining);
     }
 
 

@@ -31,12 +31,18 @@ public class Printer {
         return false;
     }
 
-    public int print(int pages, int copies) {
-        int pagesNeededtoPrint = this.pagesNeeded(pages, copies);
-        if (pagesNeededtoPrint <= this.pages) {
-            return this.pages - pagesNeededtoPrint;
+    public int decreasePaper(int pages, int copies){
+        int used = this.pagesNeeded(pages, copies);
+        return this.pages - used;
+    }
+
+    public void print(int pages, int copies) {
+        if (confirmPrint(pages, copies)){
+            this.toner = this.decreaseToner(pages, copies);
+//            write a decrease paper - put  a test in for it.
+            this.pages = this.decreasePaper(pages, copies);
         }
-        return this.pages;
+
     }
 
     public int refillPaper() {
