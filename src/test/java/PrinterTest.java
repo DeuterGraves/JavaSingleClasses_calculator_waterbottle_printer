@@ -10,7 +10,7 @@ public class PrinterTest {
 
     @Before
     public void before(){
-        printer = new Printer(100);
+        printer = new Printer(100, 1000);
     }
 
     //    Create a Printer class that has a property for number of sheets of paper left.
@@ -36,7 +36,7 @@ public class PrinterTest {
 
     @Test
     public void confirmPrinterCannotPrint(){
-        Printer lowPaper = new Printer(20);
+        Printer lowPaper = new Printer(20, 20);
         assertEquals("not enough paper", lowPaper.confirmPrint(5, 5));
     }
 
@@ -49,7 +49,7 @@ public class PrinterTest {
 
     @Test
     public void printerDoesntPrint(){
-        Printer lowPaper = new Printer(45);
+        Printer lowPaper = new Printer(45, 45);
         assertEquals(45, lowPaper.print(5, 10));
     }
 
@@ -58,25 +58,31 @@ public class PrinterTest {
 
    @Test
     public void refillPrinter(){
-        Printer lowPaper = new Printer(45);
-        assertEquals(100, printer.refill());
+        Printer lowPaper = new Printer(45, 45);
+        assertEquals(100, printer.refillPaper());
     }
 
-/*
+
     //    Add a toner volume property to the class.
 
     @Test
     public void printerHasToner(){
-    assertEquals(100, printer.getToner());
+    assertEquals(1000, printer.getToner());
     }
 
-        @Test
+
+    @Test
     public void decreaseToner(){
-        assertEquals(75, printer.print(5, 5));
+        assertEquals(975, printer.decreaseToner(5, 5));
+    }
+
+    @Test
+    public void canRefillToner(){
+        assertEquals(1000, printer.refillToner());
     }
 
 
-     */
+
 
     //    Modify the printer so that it reduces the toner by 1 for each page printed.
 

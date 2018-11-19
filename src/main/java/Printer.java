@@ -1,15 +1,23 @@
 public class Printer {
     private int pages;
+    private int toner;
 
 
-    public Printer(int pages){
+    public Printer(int pages, int toner){
         this.pages = pages;
+        this.toner = toner;
     }
 
 
     public int getPages() {
         return pages;
     }
+
+
+    public int getToner() {
+        return toner;
+    }
+
 
     public int pagesNeeded(int pages, int copies) {
         return pages * copies;
@@ -29,5 +37,20 @@ public class Printer {
             return this.pages - pagesNeededtoPrint;
         }
         return this.pages;
+    }
+
+    public int refillPaper() {
+        int pagesNeededtoFill = 100 - this.pages;
+        return this.pages + pagesNeededtoFill;
+    }
+
+    public int decreaseToner(int pages, int copies) {
+        int tonerNeeded = pages * copies;
+        return this.toner - tonerNeeded;
+    }
+
+    public int refillToner() {
+        int tonerNeeded = 1000 - this.toner;
+        return this.toner + tonerNeeded;
     }
 }
