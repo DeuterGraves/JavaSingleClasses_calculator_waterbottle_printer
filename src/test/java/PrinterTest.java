@@ -29,15 +29,16 @@ public class PrinterTest {
     //    The print method will only run if the printer has enough paper. If it runs it will reduce the value of the paper left by number of copies * number of pages.
 
 //    Method - returns string 'can print' /can't print - tests if can print and calls print
+//    change this to returning a boolean. then it can be used as part of the print method - if returns true, reduce toner and pages
     @Test
     public void confirmPrinterCanPrint(){
-        assertEquals("printing", printer.confirmPrint(5, 5));
+        assertEquals(true, printer.confirmPrint(5, 5));
     }
 
     @Test
     public void confirmPrinterCannotPrint(){
         Printer lowPaper = new Printer(20, 20);
-        assertEquals("not enough paper", lowPaper.confirmPrint(5, 5));
+        assertEquals(false, lowPaper.confirmPrint(5, 5));
     }
 
 

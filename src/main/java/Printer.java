@@ -23,12 +23,12 @@ public class Printer {
         return pages * copies;
     }
 
-    public String confirmPrint(int pages, int copies) {
+    public boolean confirmPrint(int pages, int copies) {
         int pagesNeededToPrint = this.pagesNeeded(pages, copies);
         if (pagesNeededToPrint <= this.pages){
-            return "printing";
+            return true;
         }
-        return "not enough paper";
+        return false;
     }
 
     public int print(int pages, int copies) {
